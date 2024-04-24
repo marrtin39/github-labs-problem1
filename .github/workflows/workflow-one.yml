@@ -1,0 +1,24 @@
+name: workflow-one
+on: push
+jobs:
+    lint-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: lint-step
+              run: npm lint
+    test-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: test-step
+              run: npm test
+    deploy-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: deploy-step
+              run: echo "Deploying project .."
+            - name: print progress
+              run: |
+                echo "======>"
+                echo "========>"
+            - name: print end
+              run: echo "Deployment done"
