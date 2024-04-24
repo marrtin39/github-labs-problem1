@@ -4,14 +4,24 @@ jobs:
     lint-job:
         runs-on: ubuntu-latest
         steps:
+            - name : get code
+              uses: actions/checkout@v3
+            - name: install dependencies
+              run: npm ci
             - name: lint-step
               run: npm run lint
     test-job:
+        needs: lint-job
         runs-on: ubuntu-latest
         steps:
+            - name : get code
+              uses: actions/checkout@v3
+            - name: install dependencies
+              run: npm ci
             - name: test-step
               run: npm run test
     deploy-job:
+        needs: test-job
         runs-on: ubuntu-latest
         steps:
             - name: deploy-step
